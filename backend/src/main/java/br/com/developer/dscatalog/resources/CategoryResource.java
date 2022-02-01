@@ -1,6 +1,7 @@
 package br.com.developer.dscatalog.resources;
 
 
+import br.com.developer.dscatalog.dto.CategoryDTO;
 import br.com.developer.dscatalog.entities.Category;
 import br.com.developer.dscatalog.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class CategoryResource {
 
     //Todo Buscar todas as categorias
     @GetMapping
-    public ResponseEntity<List<Category>> findAll() {
-        List<Category> list = service.buscarTodos();
+    public ResponseEntity<List<CategoryDTO>> findAll() {
+        List<CategoryDTO> list = service.buscarTodos();
         return ResponseEntity.ok().body(list);
     }
 
