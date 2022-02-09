@@ -10,14 +10,14 @@ public class CategoryDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private Long id;
 
-    private String nome;
+    private String name;
 
     public CategoryDTO() {
     }
 
     public CategoryDTO(Category obj) {
         id = obj.getId();
-        nome = obj.getName();
+        name = obj.getName();
     }
 
     public Long getId() {
@@ -28,11 +28,11 @@ public class CategoryDTO implements Serializable {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String nome) {
+        this.name = nome;
     }
 }
