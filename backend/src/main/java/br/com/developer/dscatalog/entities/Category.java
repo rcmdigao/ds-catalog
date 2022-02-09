@@ -8,6 +8,8 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "tb_categorias")
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 
 public class Category implements Serializable {
@@ -25,26 +27,20 @@ public class Category implements Serializable {
 
     @Getter
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private Instant dataCriacao;
+    private Instant registroDataCriacao;
 
     @Getter
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private Instant dataAtualizacao;
-
-
-    public Category(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    private Instant registroDataUpdate;
 
     @PrePersist
     public void prePersist(){
-        dataCriacao = Instant.now();
+        registroDataCriacao = Instant.now();
     }
 
     @PreUpdate
     public void preUpdate(){
-        dataAtualizacao = Instant.now();
+        registroDataUpdate = Instant.now();
     }
 
 }
