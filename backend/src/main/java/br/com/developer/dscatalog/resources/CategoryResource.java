@@ -42,13 +42,19 @@ public class CategoryResource {
         return ResponseEntity.created(uri).build();
     }
 
-
-
     //Todo Atualizar a categoria
     @PutMapping(value = "/{id}")
     public ResponseEntity<CategoryDTO> update(@PathVariable Long id, @RequestBody CategoryDTO dto) {
         dto = service.update(id, dto);
         return ResponseEntity.ok().body(dto);
+    }
+
+
+    //Todo Deletar a categoria
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+         service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

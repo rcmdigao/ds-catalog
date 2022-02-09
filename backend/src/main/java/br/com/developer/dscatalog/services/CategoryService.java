@@ -3,8 +3,11 @@ package br.com.developer.dscatalog.services;
 import br.com.developer.dscatalog.dto.CategoryDTO;
 import br.com.developer.dscatalog.entities.Category;
 import br.com.developer.dscatalog.repositories.CategoryRepository;
+import br.com.developer.dscatalog.services.exceptions.DataBaseException;
 import br.com.developer.dscatalog.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -54,5 +57,18 @@ public class CategoryService {
         } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Id não encontrado: " + id);
         }
+    }
+
+    //Todo Excluir categoria
+    public void delete(Long id) {
+
+        try {
+            repository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException("Id não encontrado: " + id);
+        } catch (DataIntegrityViolationException e) {
+            throw new DataBaseException("Violação de integridade");
+        }
+
     }
 }
