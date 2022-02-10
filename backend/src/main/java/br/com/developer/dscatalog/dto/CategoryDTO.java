@@ -4,7 +4,6 @@ import br.com.developer.dscatalog.entities.Category;
 
 import java.io.Serializable;
 
-
 public class CategoryDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
